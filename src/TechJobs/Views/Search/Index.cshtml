@@ -33,9 +33,22 @@
     <h3>@ViewBag.jobs.Count Result(s)</h3>
 
     // TODO #2 - Loop over jobs dictionary and display all job fields
+
     //loop over and grab all the info from the ViewBag.jobs and then using Razor Templating . . .
-    //create a table and the job listing class
-    //then loop inside (again) then grab all the information for each Dictionary that you were first iterating over and retrieve the key and values
-    //then you want to create table row <tr>
-    //then create table data <td>, this is where I will display the information
+    @foreach (Dictionary<string, string> item in ViewBag.Jobs)
+    {
+        //create a table and the job listing class
+        <table class="job-listing">
+            //then loop inside (again) then grab all the information for each Dictionary that you were first iterating over and retrieve the key and values
+            @foreach (KeyValuePair<string, string> pair in item)
+            {
+                //then you want to create table row
+                <tr>
+                    //then create table data
+                    <td>@pair.Key</td>
+                    <td>@pair.Value</td>
+                </tr>
+            }
+        </table>
+    }
 }
